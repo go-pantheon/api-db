@@ -4,6 +4,8 @@ package db.player.v1;
 
 option go_package = "api/db/player/v1;dbv1";
 
+import "player/v1/hero.proto";
+import "player/v1/storage.proto";
 import "player/v1/system.proto";
 
 // User Data
@@ -19,12 +21,31 @@ message UserProto {
   int64 next_daily_reset_at = 9; // @gotags: bson:"next_daily_reset_at" Next Daily Reset Time(Unix Timestamp)
   int64 daily_online_seconds = 10; // @gotags: bson:"daily_online_seconds" Daily Online Time(Seconds)
   int64 total_online_seconds = 11; // @gotags: bson:"total_online_seconds" Total Online Time(Seconds)
+
   int64 version = 12; // @gotags: bson:"version" Player Data Version
   string server_version = 13; // @gotags: bson:"server_version" Current Server Version
-  SystemProto system = 14; // @gotags: bson:"system" System Data
-  UserBasicProto basic = 15; // @gotags: bson:"basic" Basic Information
+
+  DevProto dev = 21; // @gotags: bson:"dev" Development and Testing Related Data
+  SystemProto system = 22; // @gotags: bson:"system" System Data
+  PlundersProto plunders = 23; // @gotags: bson:"plunders" Drop Reward Related Data
+
+  UserBasicProto basic = 31; // @gotags: bson:"basic" Basic Information
+  UserStorageProto storage = 32; // @gotags: bson:"storage" Storage
+  UserHeroListProto hero_list = 33;  // @gotags: bson:"hero_list" Hero
 }
 
 message UserBasicProto {
   int32 gender = 1; // @gotags: bson:"gender" Gender. 0: Default Not Selected Gender, 1: Male, 2: Female
+}
+
+message DevProto {
+  int64 time_offset = 1; // @gotags: bson:"time_offset"
+}
+
+message PlundersProto {
+  map<int64, PlunderStateProto> plunders = 1; // @gotags: bson:"plunders"
+}
+
+message PlunderStateProto {
+  map<int64, int64> weights = 1; // @gotags: bson:"weights" Current Drop Weight
 }
