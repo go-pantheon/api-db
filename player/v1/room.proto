@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package db.player.v1;
+
+option go_package = "api/db/player/v1;dbv1";
+
+message UserRoomProto {
+	int64 id = 1; // @gotags: bson:"id" Room ID
+  bool is_creator = 2; // @gotags: bson:"is_creator" Is Creator of the Room
+}
