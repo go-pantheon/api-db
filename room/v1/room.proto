@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package db.room.v1;
+package room.v1;
 
 option go_package = "api/db/room/v1;dbv1";
 
