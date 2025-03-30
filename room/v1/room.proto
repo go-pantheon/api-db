@@ -11,6 +11,7 @@ message RoomProto {
   uint64 room_type = 3; // @gotags: bson:"room_type" Room Type
   repeated RoomMemberProto members = 4; // @gotags: bson:"members" Members
   int64 created_at = 5; // @gotags: bson:"created_at" Created Time(Unix Timestamp)
+  int64 version = 6; // @gotags: bson:"version" Version
 }
 
 message RoomMemberProto {
