@@ -13,6 +13,7 @@ message UserHeroListProto {
 message UserHeroProto {
   int64 id = 1; // @gotags: bson:"id" Hero ID
   int64 data_id = 2; // @gotags: bson:"data_id" Hero DataID
-  uint64 level = 3; // @gotags: bson:"level" Level
-  repeated int64 equips = 4; // @gotags: bson:"equips" Wearing Equipments
+  int64 level = 3; // @gotags: bson:"level" Level
+  map<int64, int64> skills = 4; // @gotags: bson:"skills" Skill ID -> Skill Level
+  repeated int64 equips = 5; // @gotags: bson:"equips" Wearing Equipments
 }

@@ -45,7 +45,11 @@ message UserProto {
 // Basic Information
 message UserBasicProto {
   int32 gender = 1; // @gotags: bson:"gender" Gender. 0: Default Not Selected Gender, 1: Male, 2: Female
-  string recharge = 2;  // @gotags: bson:"recharge" Player Total Recharge Amount
+  RechargeProto recharge = 2;  // @gotags: bson:"recharge"
+}
+
+message RechargeProto {
+  string amount = 1;  // @gotags: bson:"amount" Player Total Recharge Amount
 }
 
 // Development and Testing Related Data
