@@ -21,9 +21,9 @@ enum OrderAckState {
   ORDER_ACK_STATE_UNSPECIFIED = 0; // Unspecified Order State
   ORDER_ACK_STATE_WAITING = 1; // Waiting for Payment
   ORDER_ACK_STATE_PENDING = 2; // Waiting for Processing
-  ORDER_ACK_STATE_SUCCESS = 3; // Order Completed
+  ORDER_ACK_STATE_SUCCEEDED = 3; // Order Completed
   ORDER_ACK_STATE_CANCELED = 4; // Order Canceled
 
-  ORDER_ACK_STATE_GM_SUCCESS = 11; // Order Completed by Administrator
+  ORDER_ACK_STATE_GM_SUCCEEDED = 11; // Order Completed by Administrator
   ORDER_ACK_STATE_GM_CANCELED = 12; // Order Canceled by Administrator
 }
