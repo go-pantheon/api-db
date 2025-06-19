@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package player.v1;
+
+option go_package = "api/db/player/v1;dbv1";
+
+
+// Basic Information
+message UserBasicProto {
+  string name = 1; // @gotags: bson:"name"
+  int32 gender = 2; // @gotags: bson:"gender" Gender. 0: Default Not Selected Gender, 1: Male, 2: Female
+  int64 created_at = 3; // @gotags: bson:"created_at"
+}

@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package player.v1;
+
+option go_package = "api/db/player/v1;dbv1";
+
+
+// Basic Information
+message UserStatusProto {
+  string online_ip = 1; // @gotags: bson:"online_ip" Online IP Address
+  int64 login_at = 2; // @gotags: bson:"login_at" Login Time(Unix Timestamp)
+  int64 logout_at = 3; // @gotags: bson:"logout_at" Logout Time(Unix Timestamp)
+  int64 latest_online_at = 4; // @gotags: bson:"last_online_at" Last Online Time(Unix Timestamp)
+  int64 next_daily_reset_at = 5; // @gotags: bson:"next_daily_reset_at" Next Daily Reset Time(Unix Timestamp)
+  int64 daily_online_seconds = 6; // @gotags: bson:"daily_online_seconds" Daily Online Time(Seconds)
+  int64 total_online_seconds = 7; // @gotags: bson:"total_online_seconds" Total Online Time(Seconds)
+}

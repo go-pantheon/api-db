@@ -4,65 +4,13 @@ package player.v1;
 
 option go_package = "api/db/player/v1;dbv1";
 
-import "player/v1/room.proto";
-import "player/v1/hero.proto";
-import "player/v1/storage.proto";
-import "player/v1/system.proto";
-
 // User Data
 message UserProto {
-  // --- Basic Information ---
   int64 id = 1; // @gotags: bson:"_id"
   int64 sid = 2; // @gotags: bson:"sid"
-  string name = 3; // @gotags: bson:"name"
-  int64 created_at = 4; // @gotags: bson:"created_at"
-  int64 login_at = 5; // @gotags: bson:"login_at"
-  int64 logout_at = 6; // @gotags: bson:"logout_at"
-  int64 last_online_at = 7; // @gotags: bson:"last_online_at"
-  string last_online_ip = 8; // @gotags: bson:"last_online_ip"
-  int64 next_daily_reset_at = 9; // @gotags: bson:"next_daily_reset_at" Next Daily Reset Time(Unix Timestamp)
-  int64 daily_online_seconds = 10; // @gotags: bson:"daily_online_seconds" Daily Online Time(Seconds)
-  int64 total_online_seconds = 11; // @gotags: bson:"total_online_seconds" Total Online Time(Seconds)
 
-  // --- Version Information ---
-  int64 version = 12; // @gotags: bson:"version" Player Data Version
-  string server_version = 13; // @gotags: bson:"server_version" Current Server Version
+  map<string, bytes> modules = 10; // @gotags: bson:"modules" Modules Data
 
-    // --- Development and Testing Related Data ---
-  DevProto dev = 21; // @gotags: bson:"dev" Development and Testing Related Data
-  SystemProto system = 22; // @gotags: bson:"system" System Data
-  PlundersProto plunders = 23; // @gotags: bson:"plunders" Drop Reward Related Data
-
-  // --- User Related Data ---
-  UserBasicProto basic = 31; // @gotags: bson:"basic" Basic Information
-  UserStorageProto storage = 32; // @gotags: bson:"storage" Storage
-  UserHeroListProto hero_list = 33;  // @gotags: bson:"hero_list" Hero
-
-  // --- Module Related Data ---
-  UserRoomProto room = 80; // @gotags: bson:"room" Room Data
-}
-
-// Basic Information
-message UserBasicProto {
-  int32 gender = 1; // @gotags: bson:"gender" Gender. 0: Default Not Selected Gender, 1: Male, 2: Female
-  RechargeProto recharge = 2;  // @gotags: bson:"recharge"
-}
-
-message RechargeProto {
-  string amount = 1;  // @gotags: bson:"amount" Player Total Recharge Amount
-}
-
-// Development and Testing Related Data
-message DevProto {
-  int64 time_offset = 1; // @gotags: bson:"time_offset"
-}
-
-// Drop Reward Related Data
-message PlundersProto {
-  map<int64, PlunderStateProto> plunders = 1; // @gotags: bson:"plunders"
-}
-
-// Drop State
-message PlunderStateProto {
-  map<int64, int64> weights = 1; // @gotags: bson:"weights" Current Drop Weight
+  int64 version = 11; // @gotags: bson:"version" Player Data Version
+  string server_version = 12; // @gotags: bson:"server_version" Current Server Version
 }

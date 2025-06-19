@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package player.v1;
+
+option go_package = "api/db/player/v1;dbv1";
+
+message RechargeProto {
+  string amount = 1;  // @gotags: bson:"amount" Player Total Recharge Amount
+}
