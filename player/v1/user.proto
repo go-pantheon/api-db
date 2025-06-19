@@ -4,13 +4,38 @@ package player.v1;
 
 option go_package = "api/db/player/v1;dbv1";
 
+import "player/v1/basic.proto";
+import "player/v1/dev.proto";
+import "player/v1/status.proto";
+import "player/v1/system.proto";
+import "player/v1/recharge.proto";
+import "player/v1/plunder.proto";
+import "player/v1/storage.proto";
+import "player/v1/hero.proto";
+import "player/v1/room.proto";
+
+
 // User Data
 message UserProto {
   int64 id = 1; // @gotags: bson:"_id"
   int64 sid = 2; // @gotags: bson:"sid"
 
-  map<string, bytes> modules = 10; // @gotags: bson:"modules" Modules Data
+  map<string, UserModuleProto> modules = 10; // @gotags: bson:"modules" Modules Data
 
   int64 version = 11; // @gotags: bson:"version" Player Data Version
   string server_version = 12; // @gotags: bson:"server_version" Current Server Version
+}
+
+message UserModuleProto {
+  oneof module {
+    UserBasicProto basic = 1; // @gotags: bson:"basic" Basic Data
+    UserDevProto dev = 2; // @gotags: bson:"dev" Dev Data
+    UserStatusProto status = 3; // @gotags: bson:"status" Status Data
+    UserSystemProto system = 4; // @gotags: bson:"system" System Data
+    UserPlunderListProto plunder_list = 5; // @gotags: bson:"plunder_list" Plunder List Data
+    UserHeroListProto hero_list = 6; // @gotags: bson:"hero_list" Hero Data
+    UserStorageProto storage = 7; // @gotags: bson:"storage" Storage Data
+    UserRechargeProto recharge = 8; // @gotags: bson:"recharge" Recharge Data
+    UserRoomProto room = 9; // @gotags: bson:"room" Room Data
+  }
 }
