@@ -6,15 +6,19 @@ option go_package = "api/db/player/v1;dbv1";
 
 // Order Data
 message OrderProto {
-  string store = 1; // @gotags: bson:"store" Payment Platform
-  string trans_id = 2; // @gotags: bson:"transId" Transaction ID
-  string token = 3; // @gotags: bson:"token, binData, subtype=2" Transaction Token
-  int32 ack = 4; // @gotags: bson:"ack" Confirmation Status
-  int64 uid = 5; // @gotags: bson:"uid" User ID
-  string product_id = 6; // @gotags: bson:"product_id" Product ID
-  int64 purchased_at = 7; // @gotags: bson:"purchase_at" Purchase Time
-  int64 ack_at = 8; // @gotags: bson:"ack_at" Confirmation Time
-  string env = 9; // @gotags: bson:"env" Environment
+  OrderInfoProto info = 1; // @gotags: bson:"info" Order Info
+  int64 uid = 2; // @gotags: bson:"ack" Confirmation Status
+  string store = 3; // @gotags: bson:"store" Payment Platform
+  string trans_id = 4; // @gotags: bson:"transId" Transaction ID
+  int32 ack = 5; // @gotags: bson:"ack" Confirmation Status
+  int64 ack_at = 6; // @gotags: bson:"ack_at" Confirmation Time
+}
+
+message OrderInfoProto {
+  string token = 1; // @gotags: bson:"token, binData, subtype=2" Transaction Token
+  string env = 2; // @gotags: bson:"env" Environment
+  string product_id = 3; // @gotags: bson:"product_id" Product ID
+  int64 purchased_at = 4; // @gotags: bson:"purchase_at" Purchase Time
 }
 
 enum OrderAckState {
