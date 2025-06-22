@@ -6,7 +6,7 @@ option go_package = "api/db/room/v1;dbv1";
 
 
 message RoomProto {
-	int64 id = 1; // @gotags: bson:"_id" Room ID
+	int64 id = 1; // @gotags: bson:"id" Room ID
   uint64 sid = 2; // @gotags: bson:"sid" Room Server ID
   uint64 room_type = 3; // @gotags: bson:"room_type" Room Type
   repeated RoomMemberProto members = 4; // @gotags: bson:"members" Members
